@@ -42,7 +42,7 @@ int printarg(struct pt_regs *ctx) {
 """
 bpf_text = bpf_text.replace('PID', pid)
 b = BPF(text=bpf_text)
-b.attach_uprobe(name="c", sym="strlen", fn_name="printarg")
+b.attach_uprobe(name="c", sym="__strlen_avx2", fn_name="printarg")
 
 # header
 print("%-18s %-16s %-6s %s" % ("TIME(s)", "COMM", "PID", "STRLEN"))
